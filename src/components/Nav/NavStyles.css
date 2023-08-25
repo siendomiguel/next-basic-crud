@@ -1,0 +1,24 @@
+.navbar {
+  background: #101010;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  align-items: center;
+  border-radius: 15px;
+  margin-top: 1.8rem;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar ul li {
+  list-style: none;
+  outline: none;
+}
+
+.Link {
+  color: white;
+  text-decoration: none;
+}

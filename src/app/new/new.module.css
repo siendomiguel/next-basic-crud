@@ -1,0 +1,18 @@
+.pageContainer {
+  width: 1200px;
+  margin: auto;
+}
+
+.gridContainerForms {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.Title {
+  text-align: center;
+}
+
+.SubTitle {
+  margin: 40px 0 20px 0 ;
+  text-align: center;
+}
