@@ -3,24 +3,47 @@ import styles from './FormOutStyles.module.css'
 
 function FormOut() {
   const onSubmit = async (e) => {
+    e.preventDefault()
+
     const nameOutput = e.target.nameOutput.value
     const priceOutput = e.target.priceOutput.value
     const aditionalOutput = e.target.aditionalOutput.value
     const paymentMethod = e.target.paymentMethod.value
     const typeOutput = e.target.selectTypeOutput.value
-    const formType = 'egreso'
-    e.preventDefault()
-    console.log(nameOutput, priceOutput, aditionalOutput, paymentMethod, typeOutput, formType)
+    const formType = 'Egreso'
+    
+
+    let priceKey = '';
+    if (paymentMethod === 'Efectivo' && typeOutput === 'Gasto') {
+      priceKey = 'gastoDiarioEfectivo';
+    } else if (paymentMethod === 'Bancolombia' && typeOutput === 'Gasto') {
+      priceKey = 'gastoDiarioBancolombia';
+    } else if (paymentMethod === 'Davivienda' && typeOutput === 'Gasto') {
+      priceKey = 'gastoDiarioDavivienda';
+    }
+  
+    const requestBody = {
+      nombreServicio: e.target.nameOutput.value,
+      usuario: typeOutput,
+      typeRegister: formType
+    };
+  
+    if (priceKey) {
+      requestBody[priceKey] = e.target.priceOutput.value;
+    }
+  
+    console.log(requestBody);
 
     // Ruta web https://ohlala-server-a4bj-dev.fl0.io/
     // Ruta local http://localhost:3002/
-    const res = await fetch('http://localhost:3002/api/v1/registro/', {
+     const res = await fetch('http://localhost:3002/api/v1/registro/', {
       method: 'POST',
-      body: JSON.stringify({nombreServicio: nameOutput, usuario: typeOutput, typeRegister: formType}),
+      body: JSON.stringify(requestBody),
       headers: {
-        'Content-Type': 'aplication/json'
+        'Content-Type': 'application/json'
       }
     })
+    console.log(res)
     const data = await res.json()
     console.log(data)
   }

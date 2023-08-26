@@ -5,7 +5,8 @@ import NavBar from '@/components/Nav/Nav.jsx'
 const poppins = Poppins({
   weight: ['300', '400', '500', '700'],
   subsets: ['latin'],
-  style: ['normal']
+  style: ['normal'],
+  variable: '--font-poppins'
 })
 
 export const metadata = {
@@ -15,8 +16,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={poppins.className}>
+    <html lang="es">
+      <body className={`${poppins.className}`}>
         <NavBar />
         {children}
       </body>
