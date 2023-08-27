@@ -1,17 +1,19 @@
 'use client'
-import styles from './FormOutStyles.module.css'
+import { useState } from 'react';
+import styles from './FormOutStyles.module.css';
 
-function FormOut() {
+function FormOut({ onRegisterUpdated }) {
+  const [isFetching, setIsFetching] = useState(false);
+
   const onSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const nameOutput = e.target.nameOutput.value
-    const priceOutput = e.target.priceOutput.value
-    const aditionalOutput = e.target.aditionalOutput.value
-    const paymentMethod = e.target.paymentMethod.value
-    const typeOutput = e.target.selectTypeOutput.value
-    const formType = 'Egreso'
-    
+    const nameOutput = e.target.nameOutput.value;
+    const priceOutput = e.target.priceOutput.value;
+    const aditionalOutput = e.target.aditionalOutput.value;
+    const paymentMethod = e.target.paymentMethod.value;
+    const typeOutput = e.target.selectTypeOutput.value;
+    const formType = 'Egreso';
 
     let priceKey = '';
     if (paymentMethod === 'Efectivo' && typeOutput === 'Gasto') {
@@ -21,31 +23,45 @@ function FormOut() {
     } else if (paymentMethod === 'Davivienda' && typeOutput === 'Gasto') {
       priceKey = 'gastoDiarioDavivienda';
     }
-  
-    const requestBody = {
-      nombreServicio: e.target.nameOutput.value,
-      usuario: typeOutput,
-      typeRegister: formType
-    };
-  
-    if (priceKey) {
-      requestBody[priceKey] = e.target.priceOutput.value;
-    }
-  
-    console.log(requestBody);
 
-    // Ruta web https://ohlala-server-a4bj-dev.fl0.io/
-    // Ruta local http://localhost:3002/
-     const res = await fetch('http://localhost:3002/api/v1/registro/', {
-      method: 'POST',
-      body: JSON.stringify(requestBody),
-      headers: {
-        'Content-Type': 'application/json'
+    const requestBody = {
+      nombreServicio: nameOutput,
+      usuario: typeOutput,
+      typeRegister: formType,
+    };
+
+    if (priceKey) {
+      requestBody[priceKey] = priceOutput;
+    }
+
+    setIsFetching(true);
+
+    try {
+      const res = await fetch('https://ohlala-server-a4bj-dev.fl0.io/api/v1/registro', {
+        method: 'POST',
+        body: JSON.stringify(requestBody),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        console.log(data);
+        console.log(res);
+
+        // Llama a la función onRegisterUpdated para actualizar los registros en ListRegister
+        if (typeof onRegisterUpdated === 'function') {
+          onRegisterUpdated();
+        }
+      } else {
+        console.error('Error al enviar el formulario:', res.statusText);
       }
-    })
-    console.log(res)
-    const data = await res.json()
-    console.log(data)
+    } catch (error) {
+      console.error('Error al enviar el formulario:', error);
+    } finally {
+      setIsFetching(false);
+    }
   }
 
   return (

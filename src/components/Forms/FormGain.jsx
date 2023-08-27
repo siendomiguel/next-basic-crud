@@ -1,16 +1,69 @@
 'use client'
+import { useState } from 'react';
 import styles from './FormGainStyles.module.css'
 
-function FormGain() {
-  const onSubmit = (e) => {
-    const name = e.target.nameServices.value
+function FormGain({onRegisterUpdated}) {
+  const [isFetching, setIsFetching] = useState(false);
+  
+  const onSubmit = async (e) => {
+    e.preventDefault()
+
+    const nameGain = e.target.nameServices.value
     const priceServices = e.target.priceServices.value
     const priceMaterial = e.target.priceMaterial.value
-    const paidMethod = e.target.selectPaid.value
+    const paymentMethod = e.target.selectPaid.value
     const personal = e.target.selectPersonal.value
-    const formType = 'ingreso'
-    e.preventDefault()
-    console.log(name, priceServices, priceMaterial, paidMethod, personal, formType)
+    const formType = 'Ingreso'
+  
+    
+    let priceKey = '';
+    if (paymentMethod === 'Efectivo') {
+      priceKey = 'ingresoEfectivo';
+    } else if (paymentMethod === 'Bancolombia') {
+      priceKey = 'ingresoBancoBancolombia';
+    } else if (paymentMethod === 'Davivienda') {
+      priceKey = 'ingresoBancoDavivienda';
+    }
+
+    const requestBody = {
+      name: nameGain,
+      madeBy: personal,
+      typeRegister: formType,
+      costoMaterialServicio: priceMaterial
+    };
+
+    if (priceKey) {
+      requestBody[priceKey] = price;
+    }
+
+    setIsFetching(true);
+
+    try {
+      const res = await fetch('https://ohlala-server-a4bj-dev.fl0.io/api/v1/registro', {
+        method: 'POST',
+        body: JSON.stringify(requestBody),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        console.log(data);
+        console.log(res);
+
+        // Llama a la función onRegisterUpdated para actualizar los registros en ListRegister
+        if (typeof onRegisterUpdated === 'function') {
+          onRegisterUpdated();
+        }
+      } else {
+        console.error('Error al enviar el formulario:', res.statusText);
+      }
+    } catch (error) {
+      console.error('Error al enviar el formulario:', error);
+    } finally {
+      setIsFetching(false);
+    }
   }
   
   return (
@@ -24,7 +77,7 @@ function FormGain() {
             id="nameServices"
             type="text"
             className={styles.inputForm}
-            placeholder="Nombre del egreso"
+            placeholder="Nombre del servicio"
           />
           <label htmlFor="priceServices" className={styles.labelForm}>
             Precio del servicio

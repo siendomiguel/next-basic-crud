@@ -16,3 +16,20 @@
   margin: 40px 0 20px 0 ;
   text-align: center;
 }
+
+.gridDetailsRegister {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.gridDetailsRegister h4 {
+  padding: 0;
+  margin: 0;
+}
+
+
+.gridDetailsRegister .action {
+  text-align: center;
+}

@@ -1,5 +1,34 @@
 .contentRegister {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 2.5fr 1fr 1fr 1fr 1fr;
   align-items: center;
   gap: 10px;
+  background: #383838;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 8px 0;
+}
+
+.contentRegister p {
+  margin: 0;
+  padding: 0;
+}
+
+.btnDelete {
+  padding: 5px;
+  background: rgb(255, 69, 69);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 700;
+}
+
+.isGain {
+  color: rgb(0, 170, 82);
+  font-weight: 700;
+}
+
+.isOut {
+  color: rgb(255, 69, 69);
+  font-weight: 700;
 }
