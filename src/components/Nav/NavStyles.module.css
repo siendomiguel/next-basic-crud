@@ -22,3 +22,8 @@
   color: white;
   text-decoration: none;
 }
+
+.sectionNavMenu {
+  display: flex;
+  gap: 10px;
+}

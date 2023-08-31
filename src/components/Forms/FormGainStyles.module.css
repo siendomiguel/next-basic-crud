@@ -1,25 +1,34 @@
 .cardFormContainer {
+  height: 100%;
+  width: 25vw;
+}
+
+.titleForm {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
+  gap: 20px;
+}
+
+.iconTitleForm {
+  color: green;
+  font-size: 30px;
 }
 
 .form {
   display: flex;
-  background: #384b41;
-  padding: 20px;
   border-radius: 15px;
   flex-direction: column;
+  padding: 0 20px;
 }
 
 .inputForm {
-  border: none;
+  border: solid 1px black;
   border-radius: 5px;
   padding: 8px;
   margin-bottom: 15px;
-  width: 400px;
   color: black;
+  font-size: 15px;
 }
 
 .btnForm {
@@ -37,24 +46,27 @@
 }
 
 .labelForm {
-  font-weight: 400;
+  font-weight: 500;
   font-size: 0.8rem;
+  font-size: 18px;
 }
 
 .selectPersonal {
-  border: none;
+  border: solid 1px black;
   border-radius: 5px;
   padding: 8px;
   margin-bottom: 15px;
   width: 100%;
   color: black;
+  font-size: 15px;
 }
 
 .selectPaid {
-  border: none;
+  border: solid 1px black;
   border-radius: 5px;
   padding: 8px;
   margin-bottom: 15px;
   width: 100%;
   color: black;
+  font-size: 15px;
 }

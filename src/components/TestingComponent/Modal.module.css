@@ -1,0 +1,53 @@
+.containerFatherModal {
+  width: 100%;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 25vw;
+  height: 100vh;
+  place-items: left;
+  transition: right 0.3s ease-in-out;
+}
+
+.modalContainer {
+  background: white;
+  position: relative;
+  color: black;
+  transition: right 0.3s ease-in-out;
+}
+
+/*======================*/
+
+.titleModal {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.topModal {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1rem 0 1rem;
+}
+
+.midModal {
+  padding: 0 1rem;
+}
+
+.hrDivisor {
+  background-color: blueviolet;
+  height: 4px;
+  border: 0;
+  margin: 10px 0 0 0;
+}
+/* .modalClose {
+  font-weight: 700;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+} */
