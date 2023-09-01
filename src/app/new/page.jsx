@@ -1,7 +1,4 @@
 'use client'
-
-
-import FormOut from '@/components/Forms/FormOut.jsx'
 import styles from './new.module.css'
 import ListRegister from '@/components/Lists/ListRegister'
 import { useState } from 'react'
@@ -15,8 +12,7 @@ function NewPage() {
   }
 
   return (
-    <div className={styles.pageContainer}>
-
+    <>
       <h2 className={styles.SubTitle}>Últimos registros</h2>
       <section className={styles.gridDetailsRegister}>
         <h4 className={styles.type}>Tipo</h4>
@@ -29,7 +25,7 @@ function NewPage() {
         <h4 className={styles.action}>Acción</h4>
       </section>
       <ListRegister refresh={refresh} />
-    </div>
+    </>
   )
 }
 

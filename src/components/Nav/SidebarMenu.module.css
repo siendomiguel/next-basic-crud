@@ -1,0 +1,28 @@
+.hrSeparator {
+  background-color: rgb(92, 92, 92);
+  height: 4px;
+  border: 0;
+  margin: 10px 0 5px 0;
+}
+
+
+.containerSidebarMenu {
+  height: 100vh;
+  border-right: solid 1px #838383;
+  background-color: #1f1f1f;
+}
+
+.sectionSidebarMenu {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 350px;
+  width: 100%; 
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+.sectionSidebarMenu a {
+  text-decoration: none;
+  color: #fff;
+}

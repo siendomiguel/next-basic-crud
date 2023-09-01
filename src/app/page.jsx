@@ -8,7 +8,7 @@ function HomePage() {
 
   return (
     <div>
-      <h1>Registro diario</h1>
+      <h1>Bienvenido a tu app de registros</h1>
     </div>
   )
 }

@@ -8,27 +8,15 @@ function NavBar() {
   return (
     <nav className={styles.navbar}>
       <ul>
-        <li>
-          <Link className={styles.Link} href="/">
-            Inicio
-          </Link>
-        </li>
-        <li>
-          <Link className={styles.Link} href="/about">
-            Conocenos
-          </Link>
-        </li>
-        <li>
-          <Link className={styles.Link} href="/new">
-            Registros
-          </Link>
-        </li>
+        <li>Total del día: --|--</li>
+        <li>Egresos del día: --|--</li>
+        <li>Fecha: --|--|--</li>
       </ul>
       <section className={styles.sectionNavMenu}>
-        <ButtonModal textBtn="Registrar venta" bgColor='rgb(27, 180, 103);'>
+        <ButtonModal textBtn="Registrar venta" bgColor="rgb(27, 180, 103)">
           <FormGain />
         </ButtonModal>
-        <ButtonModal textBtn="Registrar gasto" bgColor='rgb(170, 66, 66);'>
+        <ButtonModal textBtn="Registrar gasto" bgColor="rgb(170, 66, 66)">
           <FormOut />
         </ButtonModal>
       </section>
