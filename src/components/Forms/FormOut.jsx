@@ -21,7 +21,7 @@ function FormOut({ onRegisterUpdated }) {
     setIsFetching(true)
 
     try {
-      const res = await fetch('http://localhost:3002/api/v1/registro', {
+      const res = await fetch('https://ohlala-server-a4bj-dev.fl0.io/api/v1/registro', {
         method: 'POST',
         body: JSON.stringify(requestBody),
         headers: {
