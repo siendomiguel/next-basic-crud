@@ -11,7 +11,7 @@ function FormOut({ onRegisterUpdated }) {
 
     const requestBody = {
       name: e.target.nameOutput.value,
-      price: e.target.priceOutput.value,
+      value: e.target.priceOutput.value,
       paymentMethod: e.target.paymentMethod.value,
       madeBy: e.target.selectPersonal.value,
       typeRegister: 'Egreso',

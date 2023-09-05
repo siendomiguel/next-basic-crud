@@ -11,7 +11,7 @@ function FormGain({ onRegisterUpdated }) {
 
     const requestBody = {
       name: e.target.nameServices.value,
-      price: e.target.priceServices.value,
+      value: e.target.priceServices.value,
       priceMaterial: e.target.priceMaterial.value,
       paymentMethod: e.target.selectPaid.value,
       madeBy: e.target.selectPersonal.value,
