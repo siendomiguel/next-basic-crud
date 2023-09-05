@@ -53,7 +53,7 @@ function ListRegister({ refresh }) {
             {item.typeRegister}
           </p>
           <p>{item.name}</p>
-          <p>$ {item.price}</p>
+          <p>$ {item.value}</p>
           <p>
             {item.priceMaterial === null
               ? 'No aplica'
